@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, Sparkles, Heart } from 'lucide-react';
 
@@ -10,14 +10,14 @@ export default function PhotoReveal() {
   const photos = [
     {
       id: 1,
-      src: '/muskan1.jpg',
+      src: `${import.meta.env.BASE_URL}muskan1.jpg`,
       caption: 'Your radiant smile ✨',
       rotation: -6,
       date: 'August 18th'
     },
     {
       id: 2,
-      src: '/muskan2.jpg',
+      src: `${import.meta.env.BASE_URL}muskan2.jpg`,
       caption: 'Pure elegance 💖',
       rotation: 6,
       date: 'A special moment'

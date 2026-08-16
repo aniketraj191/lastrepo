@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Volume2, VolumeX, Music } from 'lucide-react';
+import { Volume2, VolumeX } from 'lucide-react';
 import LockScreen from './components/LockScreen';
 import Hero from './components/Hero';
 import PhotoReveal from './components/PhotoReveal';
@@ -40,7 +40,7 @@ export default function App() {
       {/* 2. Hidden Audio Element for Background Music */}
       <audio
         ref={audioRef}
-        src="/birthday_song.mp3" // Romantic soft ambient track
+        src={`${import.meta.env.BASE_URL}birthday_song.mp3`} // Romantic soft ambient track
         loop
       />
 

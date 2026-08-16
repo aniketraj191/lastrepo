@@ -1,17 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Heart, Lock, Unlock } from 'lucide-react';
 
 export default function LockScreen({ onUnlock }) {
   const [pin, setPin] = useState(['', '', '', '']);
   const [error, setError] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
-  const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+  const inputRefs = useRef([]);
 
   // Focus first input on mount
   useEffect(() => {
-    if (inputRefs[0].current) {
-      inputRefs[0].current.focus();
+    if (inputRefs.current[0]) {
+      inputRefs.current[0].focus();
     }
   }, []);
 
@@ -24,8 +24,8 @@ export default function LockScreen({ onUnlock }) {
     setPin(newPin);
 
     // Auto-focus next input
-    if (value && index < 3) {
-      inputRefs[index + 1].current.focus();
+    if (value && index < 3 && inputRefs.current[index + 1]) {
+      inputRefs.current[index + 1].focus();
     }
 
     // Check passcode if complete
@@ -46,7 +46,9 @@ export default function LockScreen({ onUnlock }) {
         const newPin = [...pin];
         newPin[index - 1] = '';
         setPin(newPin);
-        inputRefs[index - 1].current.focus();
+        if (inputRefs.current[index - 1]) {
+          inputRefs.current[index - 1].focus();
+        }
       } else {
         const newPin = [...pin];
         newPin[index] = '';
@@ -69,8 +71,8 @@ export default function LockScreen({ onUnlock }) {
     setTimeout(() => {
       setError(false);
       setPin(['', '', '', '']);
-      if (inputRefs[0].current) {
-        inputRefs[0].current.focus();
+      if (inputRefs.current[0]) {
+        inputRefs.current[0].focus();
       }
     }, 600);
   };
@@ -120,7 +122,7 @@ export default function LockScreen({ onUnlock }) {
             {pin.map((digit, index) => (
               <input
                 key={index}
-                ref={inputRefs[index]}
+                ref={(el) => (inputRefs.current[index] = el)}
                 type="text"
                 inputMode="numeric"
                 maxLength={1}

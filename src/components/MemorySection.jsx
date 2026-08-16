@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Sparkles, Heart, Compass, MessageCircle } from 'lucide-react';
+import { Calendar, Sparkles, Heart, MessageCircle } from 'lucide-react';
 
 export default function MemorySection() {
   const memories = [

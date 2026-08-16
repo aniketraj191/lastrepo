@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Heart } from 'lucide-react';
 
@@ -24,18 +23,6 @@ export default function Hero() {
       transition: {
         duration: 1,
         ease: [0.16, 1, 0.3, 1], // easeOutExpo
-      },
-    },
-  };
-
-  const heartVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: [0, 1.3, 1],
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: 'easeOut',
       },
     },
   };

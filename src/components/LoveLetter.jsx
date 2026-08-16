@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Mail } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 export default function LoveLetter() {
   const [isOpen, setIsOpen] = useState(false);
